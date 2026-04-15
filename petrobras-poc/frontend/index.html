@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrobras SOC - Zero Trust</title>
+    
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Ethers v6 & Leaflet JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body class="soc-theme">
+    <div class="dashboard-grid">
+        <header class="soc-header">
+            <div class="logo-area">
+                <div class="pulse-ring"></div>
+                <h1>SOC // Zero Trust Gateway</h1>
+            </div>
+            <div class="hardware-identity" id="identity-panel">
+                <span class="label">HARDWARE ID:</span>
+                <span id="device-address" class="crypto-addr">Pendente...</span>
+                <div id="status-dot" class="dot online"></div>
+            </div>
+        </header>
+
+        <!-- Left Column: Map & Context Vectors (Gamification) -->
+        <aside class="vectors-panel glass-panel">
+            <h2 class="panel-title">Vetores de Contexto Ocultos</h2>
+            
+            <!-- Map Geofencing -->
+            <div class="vector-group">
+                <h3>1. Geofencing (Posição Real)</h3>
+                <p class="desc">Arraste o pin (Óculos) para testar o perímetro da Central.</p>
+                <div id="map" class="map-container"></div>
+                <div class="map-stats">Variância GPS: <span id="gps-val" class="highlight">0.00</span> m</div>
+            </div>
+
+            <!-- Network Spoofing -->
+            <div class="vector-group">
+                <h3>2. Roteamento de Rede</h3>
+                <p class="desc">Isso será lido na rota do Payload (Simula o Gateway).</p>
+                <div class="network-toggles">
+                    <button class="net-btn active" data-ip="10.0.1.45" id="btn-net-corp">VPN Corporativa Oculta</button>
+                    <button class="net-btn warning" data-ip="150.21.34.2" id="btn-net-pub">Wi-Fi Público Desprotegido (4G)</button>
+                    <button class="net-btn danger" data-ip="185.15.2.1" id="btn-net-for">Rede de Servidor Offshore (RUS/CN)</button>
+                </div>
+            </div>
+
+            <!-- Analog Clock -->
+            <div class="vector-group clock-group">
+                <h3>3. Timestamp Físico (Relógio)</h3>
+                <p class="desc">Clique ou arraste no círculo do relógio para fixar a hora.</p>
+                <div class="clock-container">
+                    <div class="clock">
+                        <div class="clock-face">
+                            <!-- Markers 24h -->
+                            <div class="marker m12">0h</div>
+                            <div class="marker m6">12h</div>
+                            <div class="marker m3">6h</div>
+                            <div class="marker m9">18h</div>
+                            
+                            <div class="hand hour-hand" id="hour-hand"></div>
+                            <div class="center-dot"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-stats">Hora no Aparelho: <span id="time-val" class="highlight">12:00</span></div>
+            </div>
+            
+            <!-- Hardware Hacking -->
+            <div class="vector-group hack-group">
+                <h3>4. Integridade da Criptografia</h3>
+                <button id="btn-gen-rogue-key" class="hack-btn">
+                    <span class="glitch-text" data-text="FORJAR NOVA CHAVE EPROM (HACKER)">FORJAR NOVA CHAVE EPROM (HACKER)</span>
+                </button>
+                <button id="btn-restore-key" class="restore-btn">Restaurar Aparelho ao Padrão de Fábrica</button>
+            </div>
+        </aside>
+
+        <!-- Right Column: Chat/Interaction -->
+        <main class="interaction-panel glass-panel">
+            <h2 class="panel-title">Telemetria & IA Assistente</h2>
+            <div id="chat-history" class="chat-history terminal-scroll">
+                <div class="message system">Canal encriptado. Monitoramento SOC-AI habilitado.</div>
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Faça uma requisição ao LLM (Ex: Relatório das Válvulas)...">
+                <button id="btn-send" class="action-btn">ENVIAR ENVELOPE</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
