@@ -1,5 +1,5 @@
 {
-    "address": "0x823070E713d7956329b0E24938268B41E7e65B4A",
+    "address": "0xECbce0999c564696A68A90b04961e4BD91E38601",
     "abi": [
         {
             "inputs": [],
@@ -143,5 +143,5 @@
             "type": "function"
         }
     ],
-    "dummy_frontend_device": "0xd05EEAa7374Cffdd17286767D92617764eC11504"
+    "dummy_frontend_device": "0xd8850b41c210c4EaC3065935f273994f351c37d9"
 }
